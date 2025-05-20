@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Todo{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Edit To-Do</h2>
+
+    <form method="POST" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="task" class="form-label">Task</label>
+            <input type="text" class="form-control" id="task" name="task" value="{{ todo.task }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="4">{{ todo.description }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="reminder_time" class="form-label">Set Reminder Time</label>
+            <input type="datetime-local" class="form-control" id="reminder_time" name="reminder_time" value="{{ todo.reminder_time.strftime('%Y-%m-%dT%H:%M') if todo.reminder_time else '' }}">
+        </div>
+        <button type="submit" class="btn btn-success">Update To-Do</button>
+        <a href="{{ url_for('show_all') }}" class="btn btn-secondary ms-2">Back to To-Do List</a>
+    </form>
+</div>
+{% endblock %}

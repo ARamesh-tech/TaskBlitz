@@ -1,0 +1,65 @@
+{%extends "base.html" %}
+{%block title%}Contact Us{%endblock%}
+{%block content%}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <img src="{{ url_for('static', filename='contactus.gif')}}" style="width:65px;height:60px; display:block; margin: 0 auto 10px;">
+                    <h2 class="text-center mb-4">Contact Us</h2>
+                    <p class="text-center text-muted">If you have any questions, feel free to reach out!</p>
+                    <form action="{{ request.path }}" method="POST">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message:</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if replies %}
+<h2 style="margin-top: 20px;">What people say?</h2>
+<div style="margin-top: 20px;">
+    {% for reply in replies %}
+    <div style="background-color: #f9f9f9;
+    border-left: 4px solid #007bff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+        <div style="font-style: italic;
+    color: #333;">
+            <strong>{{ reply.name }} says:</strong>
+        </div>
+        <div style="margin-top: 5px;">
+            {{ reply.message }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{%endblock%}

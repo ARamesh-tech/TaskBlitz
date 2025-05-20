@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #92e6d0, #49d67f);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      width: 320px;
+      border: 1px solid #ccc;
+    }
+
+    .login-container h2 {
+      margin-bottom: 30px;
+      text-align: center;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #40d479;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .login-container button:hover {
+      background-color: #15b946;
+    }
+
+    .login-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .login-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <form method="POST" class="login-container">
+    <img src="{{ url_for('static', filename='reg_user.gif')}}" style="width:48px;height:48px; display:block; margin: 0 auto 10px;">
+    <h2>Register</h2>
+    <input name="username" placeholder="Username" required />
+    <input name="password" type="password" placeholder="Password" required />
+    <button type="submit">Register</button>
+    <a class="login-link" href="{{ url_for('login') }}">Already have an account? Login</a>
+  </form>
+</body>
+</html>

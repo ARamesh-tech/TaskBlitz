@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Add Todo{% endblock %}
+
+{% block content %}
+<h1>Add New To-Do</h1>
+
+<form action="{{ request.path }}" method="POST">
+    <div class="mb-3">
+        <label for="task" class="form-label">Task</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="task" required>
+    </div>
+    <div class="mb-3">
+        <label for="desc" class="form-label">Description</label>
+        <input type="text" class="form-control" id="desc" name="description" required>
+    </div>
+    <div class="mb-3">
+        <label for="reminder_time" class="form-label">Set Reminder Time</label>
+        <input type="datetime-local" class="form-control" id="reminder_time" name="reminder_time">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
