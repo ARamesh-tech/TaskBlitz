@@ -189,4 +189,4 @@ def get_due_reminders():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # Create the database and the table defined by [your class] SQLAlchemy models.
-    app.run()
+    app.run(host='0.0.0.0')
